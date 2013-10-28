@@ -6,21 +6,21 @@
 $ gem install curb
 ```
 
-## Authentication headers
+## session.json - Authentication headers
 
 Log in to the web app, inspect the requests and make a player search.
-Grab the X-UT-PHISHING-TOKEN and X-UT-SID and add them into the top of the script like the example below.
+Grab the X-UT-PHISHING-TOKEN and X-UT-SID and add them to `session.json` like the example below.
 
 ```
-session_headers = {
-  'X-UT-PHISHING-TOKEN' => '46887542156800540597',
-  'X-UT-SID' => '11fc3bbe-a98c-470d-a1df-a591f272800f'
+{
+  "X-UT-PHISHING-TOKEN":"46887542156800540597",
+  "X-UT-SID": "11fc3bbe-a98c-470d-a1df-a591f272800f"
 }
 ```
 
 Keep your browser open to keep the session alive.
 
-## Adding players
+## players.json - Adding players
 
 `players.json` is the file which contains the players to search for.
 
@@ -63,8 +63,8 @@ Keep your browser open to keep the session alive.
 
 Whitespace does not matter, so it is possible to compress the JSON.
 
-    [{"desc":"David Silva","assetid":"168542","maxb":[100000,105000,102000]},
-     {"desc":"Gotze","assetid":"192318","maxb":[50000,51000,52000]}]
+    [{"desc":"David Silva","defid":"168542","maxb":[100000,105000,102000]},
+     {"desc":"Gotze","defid":"192318","maxb":[50000,51000,52000]}]
 
 ## Running the script
 
