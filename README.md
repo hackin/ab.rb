@@ -1,6 +1,7 @@
 # ab.rb
 
-A simple, open source autobuyer written in Ruby.
+A simple, open source autobuyer written in Ruby. Uses one account to search and
+buy.
 
 ## Installation
 
