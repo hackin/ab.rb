@@ -1,4 +1,6 @@
-# ab.rb - a simple autobuyer written in Ruby
+# ab.rb
+
+A simple, open source autobuyer written in Ruby.
 
 ## Installation
 
