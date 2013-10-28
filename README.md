@@ -34,42 +34,46 @@ Keep your browser open to keep the session alive.
 
 ### Valid JSON parameters
 
-`leag`: League
-`defid`: Definition ID
-`mdefid`: Masked Definition ID
-`nat`: Nation
-`team`: Team
-`zone`: Player zone (attacker, midfield, defender)
-`pos`: Player position
-`minb`: Minimum BIN price
-`maxb`: Maximum BIN price, can either be a single integer or an array of integers.
+* `leag`: League
+* `defid`: Definition ID
+* `mdefid`: Masked Definition ID
+* `nat`: Nation
+* `team`: Team
+* `zone`: Player zone (attacker, midfield, defender)
+* `pos`: Player position
+* `minb`: Minimum BIN price
+* `maxb`: Maximum BIN price, can either be a single integer or an array of integers.
 
 ### Example players.json
 
 #### With various search parameters
 
-  [
-    {
-      "desc": "Aguero",
-      "maxb": 200000,
-      "leag": "13",
-      "team": "10",
-      "nat": "52",
-      "zone": "attacker"
-    },
-    {
-      "desc": "Alaba",
-      "maxb": [ 30000, 29000, 30500 ],
-      "leag": "19",
-      "nat": "4",
-      "team": "21",
-      "zone": "defense"
-    }
-  ]
+```
+[
+  {
+    "desc": "Aguero",
+    "maxb": 200000,
+    "leag": "13",
+    "team": "10",
+    "nat": "52",
+    "zone": "attacker"
+  },
+  {
+    "desc": "Alaba",
+    "maxb": [ 30000, 29000, 30500 ],
+    "leag": "19",
+    "nat": "4",
+    "team": "21",
+    "zone": "defense"
+  }
+]
+```
 
 #### With definition ID
 
 Whitespace does not matter, so it is possible to compress the JSON.
 
-    [{"desc":"David Silva","defid":"168542","maxb":[100000,105000,102000]},
-     {"desc":"Gotze","defid":"192318","maxb":[50000,51000,52000]}]
+```
+[{"desc":"David Silva","defid":"168542","maxb":[100000,105000,102000]},
+ {"desc":"Gotze","defid":"192318","maxb":[50000,51000,52000]}]
+```
