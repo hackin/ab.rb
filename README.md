@@ -11,7 +11,7 @@ $ gem install curb
 ## Usage
 
 ```
-$ ./abt
+$ ./ab.rb
 ```
 
 ## session.json - Authentication headers
