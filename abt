@@ -7,11 +7,6 @@ require 'net/http'
 require 'uri'
 require 'zlib'
 
-session_headers = {
-  'X-UT-PHISHING-TOKEN' => '', # e.g. 46887542156800540597
-  'X-UT-SID' => '' # e.g. 11fc3bbe-a98c-470d-a1df-a591f272800f
-}
-
 def uncompress string
   begin
     Zlib::GzipReader.new(StringIO.new(string), :external_encoding => string.encoding).read
@@ -105,6 +100,7 @@ end
 start_time = (Time.now.to_f * 1000.0).to_i
 
 players = JSON.parse IO.read 'players.json'
+session_headers = JSON.parse IO.read 'session.json'
 
 http = Curl::Easy.new
 auction_regexp = Regexp.new('auctionInfo\":\[\{').freeze
@@ -130,6 +126,8 @@ loop do
       end
     end
 
+    sleep rand(0.05..0.10)
+
     request = base_request(http, search_path, session_headers, 'GET')
 
     if /auctionInfo\":\[\{/ =~ request
@@ -137,11 +135,11 @@ loop do
       result[:trade_id] = request[/\"tradeId\":(\d+)/, 1].to_s
       result[:bin_price] = request[/\"buyNowPrice\":(\d+)/, 1].to_s
 
-      bid = base_request(buyer_http, "/ut/game/fifa14/trade/#{result[:trade_id]}/bid", session_headers, 'PUT', "{\"bid\":#{result[:bin_price]}}")
+      bid = base_request(http, "/ut/game/fifa14/trade/#{result[:trade_id]}/bid", session_headers, 'PUT', "{\"bid\":#{result[:bin_price]}}")
       total_time = (http.total_time * 1000.0).to_i
       timestamp = (Time.now.to_f * 1000.0).to_i
 
-      credit_request = base_request(buyer_http, '/ut/game/fifa14/user/credits', session_headers, 'GET')
+      credit_request = base_request(http, '/ut/game/fifa14/user/credits', session_headers, 'GET')
 
       result[:resource_id] = request[/\"resourceId\":(\d+)/, 1]
       result[:asset_id] = request[/\"assetId\":(\d+)/, 1]
@@ -162,20 +160,16 @@ loop do
       case parsed_output[:return_id]
       when 1
         puts "#{Time.now.to_i}: #{parsed_output[:log_string]}"
-        log.info parsed_output[:log_string]
       when 2
-        log.info "#{parsed_output[:log_string]} #{bid}"
-        sleep 12
+        puts "#{Time.now.to_i}: #{parsed_output[:log_string]}"
+        sleep 8
       end
     else
       unless request[/\"auctionInfo\":\[\]/]
-        sleep 4
+        sleep 8
       end
     end
 
-    sleep rand(0.15..0.25)
+    sleep rand(0.05..0.15)
   end
-
-  http.close
-  GC.start
 end
