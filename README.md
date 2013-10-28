@@ -8,6 +8,12 @@ A simple, open source autobuyer written in Ruby.
 $ gem install curb
 ```
 
+## Usage
+
+```
+$ ./abt
+```
+
 ## session.json - Authentication headers
 
 Log in to the web app, inspect the requests and make a player search.
@@ -67,9 +73,3 @@ Whitespace does not matter, so it is possible to compress the JSON.
 
     [{"desc":"David Silva","defid":"168542","maxb":[100000,105000,102000]},
      {"desc":"Gotze","defid":"192318","maxb":[50000,51000,52000]}]
-
-## Running the script
-
-```
-$ ./abt
-```
