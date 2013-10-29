@@ -24,6 +24,8 @@ $ gem install curb
 
 ## Usage
 
+Add your authentication headers to `session.json` and some search parameters to `players.json` and start the script.
+
 ```
 $ ./ab.rb
 ```
