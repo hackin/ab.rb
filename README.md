@@ -1,7 +1,7 @@
 # ab.rb
 
 A simple, open source autobuyer written in Ruby. Uses one account to search and
-buy. Use with caution and on your own risk, this script will buy any player it finds. 
+buy. Use with caution and on your own risk, this script will buy any player it finds.
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=85BL8GXQ3JEHQ&lc=NO&item_name=ab%2erb%20by%20pkhamre&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donate_LG%2egif%3aNonHosted)
 
@@ -34,6 +34,9 @@ $ ./ab.rb
 
 Log in to the web app, inspect the requests and make a player search.
 Grab the X-UT-PHISHING-TOKEN and X-UT-SID and add them to `session.json` like the example below.
+
+In the repository there is a file called `session.json.example`. Move it to
+`session.json` and add your authentication headers.
 
 ```
 {
